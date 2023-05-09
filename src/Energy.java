@@ -7,5 +7,7 @@ public class Energy extends Physics {
     static double GravitationalEnergy(double Mass , double Height, double Gf){
         return Mass * Height * Gf;
     }
-
+     static double Momentum(double mass, double velocity){
+        return mass * velocity * getGravity;
+    }
 }
