@@ -41,4 +41,16 @@ public class Main {
         System.out.println(Energy.GravitationalEnergy(Mass, Height, Gf));
         
     }
+     //             .....POTENTIAL ENERGY.....
+            System.out.println("\t \t .....POTENTIAL ENERGY.....");
+            System.out.println("Input Mass");
+            Mass = input.nextDouble();
+
+            System.out.println("Input Height");
+            Height = input.nextDouble();
+            System.out.println("Potential Energy: ");
+
+
+            System.out.println(Energy.PotentialEnergy(Mass,Physics.getGravity(), Height));
+
 }
