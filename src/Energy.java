@@ -13,7 +13,7 @@ public class Energy extends Physics {
      static double PotentialEnergy(double Mass, double Gravity, double Height) {
         return Mass * Physics.getGravity * Height;
      }
-     static double ElectricalEnergy(double potential difference, double current, double time){
-         return potential difference * current * time;
+     static double ElectricalEnergy(double potentialDifference, double current, double time){
+         return potentialDifference * current * time;
      }
 }
