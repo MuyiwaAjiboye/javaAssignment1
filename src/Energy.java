@@ -11,6 +11,7 @@ public class Energy extends Physics {
         return mass * velocity * getGravity;
     }
      static double PotentialEnergy(double Mass, double Gravity, double Height) {
-
         return Mass * Physics.getGravity * Height;
+     }
+    
 }
