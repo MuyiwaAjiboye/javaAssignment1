@@ -53,4 +53,15 @@ public class Main {
 
             System.out.println(Energy.PotentialEnergy(Mass,Physics.getGravity(), Height));
 
+    
+    double potentialDifference;
+    double current;
+    double time;
+    
+    System.out.println("ElectricalEnergy");
+    System.out.println("potentialDifference");
+    potentialDifference = input.nextDouble();
+    current = input.nextDouble();
+    time = input.nextDouble();
+    System.out.println(Energy.ElectricalEnergy(potententialDifference,current,time));
 }
