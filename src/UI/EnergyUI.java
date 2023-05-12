@@ -44,11 +44,21 @@ public class EnergyUI {
     JButton calculateMomentum = new JButton("Calculate");
     JTextField enterMassOfMomentum = new JTextField("Enter Mass");
     JTextField enterVelocityOfMomentum = new JTextField("Enter Velocity");
+    
+    
+    // GRAVITATIONAL ENERGY FRAME
+    JButton GravitationalEnergyButton = new JButton("Gravitational Energy");
+    JFrame GravitationalEnergyFrame = new JFrame("Gravitational Energy");
+    JButton calculateGravitationalEnergy = new JButton("Gravitational Energy");
+    JTextField enterMassOfGravitationalEnergy = new JTextField("Enter Mass");
+    JTextField enterHeightOfGravitationalEnergy = new JTextField("Enter Height");
+    JTextField enterGForceOfGravitationalEnergy = new JTextField("Enter Grav.. Force");
 
     public void mainUI() {
         myFrame.add(KineticEnergyButton);
         myFrame.add(PotentialEnergyButton);
         myFrame.add(ElectricalEnergyButton);
+        myFrame.add(GraavitationalEnergyButton);
         myFrame.setSize(950, 500);
         myFrame.setLayout(new FlowLayout(FlowLayout.LEADING));
         myFrame.setVisible(true);
@@ -79,6 +89,12 @@ public class EnergyUI {
             System.out.println("Calculate Momentum");
             JOptionPane.showMessageDialog(null, "Calculate Momentum");
             drawMomentumUI();
+        });
+        // GRAVITATIONAL ENERGY FRAME 2
+        GravitationalEnergyButton.addActionListener(e -> {
+            System.out.println("Calculate Gravitational Energy");
+            JOptionPane.showMessageDialog(null, "Calculate Gravitational Energy");
+            drawGravitationalEnergyUI();
         });
 
         // PARAMETER (ATTRIBUTES)
@@ -134,6 +150,19 @@ public class EnergyUI {
 
             }
         });
+        // GRAVITATIONAL ENERGY
+        calculateGravitationalEnergy.addActionListener(e -> {
+            try {
+                double Mass = Double.parseDouble(enterMassOfGravitationalEnergy.getText());
+                double Height = Double.parseDouble(enterHeightOfGravitationalEnergy.getText());
+                double GForce = Double.parseDouble(enterGForceOfGravitationalEnergy.getText());
+                double GravitationalEnergy =  Mass * Height * GForce;
+                JOptionPane.showMessageDialog(null, " Gravitational Energy = " + GravitationalEnergy);
+            } catch (NumberFormatException nfe) {
+                JOptionPane.showMessageDialog(null, "Pls Input a Valid Number");
+
+            }
+        });
     }
 
     public void drawKineticEnergyUI() {
@@ -176,5 +205,16 @@ public class EnergyUI {
         MomentumFrame.setLayout(new FlowLayout((FlowLayout.LEFT)));
         MomentumFrame.setSize(600, 650);
         MomentumFrame.setVisible(true);
+    }
+    public void drawGravitationalEnergyUI() {
+        GravitationalEnergyFrame = new JFrame(" Gravitational Energy");
+        GravitationalEnergyFrame.add(enterMassOfGravitationalEnergy);
+        GravitationalEnergyFrame.add(enterHeightOfGravitationalEnergy);
+        GravitationalEnergyFrame.add(enterGForceOfGravitationalEnergy);
+        GravitationalEnergyFrame.add(calculateGravitationalEnergy);
+        GravitationalEnergyFrame.setLayout(new FlowLayout((FlowLayout.LEFT)));
+        GravitationalEnergyFrame.setSize(900, 950);
+        GravitationalEnergyFrame.setVisible(true);
+
     }
 }
