@@ -2,6 +2,9 @@ package UI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.util.InputMismatchException;
+
 
 import static java.lang.Math.pow;
 
@@ -25,11 +28,21 @@ public class EnergyUI {
     JButton calculatePotentialEnergy = new JButton("Calculate");
     JTextField enterMassOfPotentialEnergy = new JTextField("Enter Mass");
     JTextField enterHeightOfPotentialEnergy = new JTextField("Enter Height");
+    
+    // ELECTRICAL ENERGY FRAME
+    
+    JButton ElectricalEnergyButton = new JButton("Electrical Energy");
+    JFrame ElectricalEnergyFrame = new JFrame("Electrical Energy");
+    JButton calculateElectricalEnergy = new JButton("Calculate");
+    JTextField enterPDifferenceOfElectricalEnergy = new JTextField("Enter Potential Diff...");
+    JTextField enterCurrentOfElectricalEnergy = new JTextField("Enter Current");
+    JTextField enterTimeOfElectricalEnergy = new JTextField("Enter Time");
 
 
     public void mainUI() {
         myFrame.add(KineticEnergyButton);
         myFrame.add(PotentialEnergyButton);
+        myFrame.add(ElectricalEnergyButton);
         myFrame.setSize(950, 500);
         myFrame.setLayout(new FlowLayout(FlowLayout.LEADING));
         myFrame.setVisible(true);
@@ -46,6 +59,13 @@ public class EnergyUI {
             System.out.println("Calculate Potential Energy");
             JOptionPane.showMessageDialog(null, "Calculate Potential Energy");
             drawPotentialEnergyUI();
+        });
+        
+        // ELECTRICAL ENERGY FRAME 2
+        ElectricalEnergyButton.addActionListener(e -> {
+            System.out.println("Calculate Electrical Energy");
+            JOptionPane.showMessageDialog(null, "Calculate Electrical Energy");
+            drawElectricaEnergyUI();
         });
 
 
@@ -75,7 +95,20 @@ public class EnergyUI {
 
             }
         });
+        
+        //   ELECTRICAL ENERGY
+        calculateElectricalEnergy.addActionListener(e -> {
+            try {
+                double PDiffence = Double.parseDouble(enterPDifferenceOfElectricalEnergy.getText());
+                double Current = Double.parseDouble(enterCurrentOfElectricalEnergy.getText());
+                double Time = Double.parseDouble(enterTimeOfElectricalEnergy.getText());
+                double ElectricalEnergy = PDiffence * Current * Time;
+                JOptionPane.showMessageDialog(null, " Electrical Energy = " + ElectricalEnergy);
+            } catch (NumberFormatException nfe) {
+                JOptionPane.showMessageDialog(null, "Pls Input a Valid Number");
 
+            }
+        });
     }
 
     public void drawKineticEnergyUI() {
@@ -98,5 +131,15 @@ public class EnergyUI {
         PotentialEnergyFrame.setVisible(true);
 
 
+    }
+    public void drawElectricaEnergyUI() {
+        ElectricalEnergyFrame = new JFrame("Force");
+        ElectricalEnergyFrame.add(enterPDifferenceOfElectricalEnergy);
+        ElectricalEnergyFrame.add(enterCurrentOfElectricalEnergy);
+        ElectricalEnergyFrame.add(enterTimeOfElectricalEnergy);
+        ElectricalEnergyFrame.add(calculateElectricalEnergy);
+        ElectricalEnergyFrame.setLayout(new FlowLayout((FlowLayout.LEFT)));
+        ElectricalEnergyFrame.setSize(900, 950);
+        ElectricalEnergyFrame.setVisible(true);
     }
 }
