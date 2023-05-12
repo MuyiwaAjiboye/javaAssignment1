@@ -17,9 +17,19 @@ public class EnergyUI {
     JTextField enterMassOfKineticEnergy = new JTextField("Enter Mass");
     JTextField enterVelocityOfKineticEnergy = new JTextField("Enter Velocity");
 
+
+    //POTENTIAL ENERGY FRAME
+
+    JButton PotentialEnergyButton = new JButton("Potential Energy");
+    JFrame PotentialEnergyFrame = new JFrame("Potential Energy");
+    JButton calculatePotentialEnergy = new JButton("Calculate");
+    JTextField enterMassOfPotentialEnergy = new JTextField("Enter Mass");
+    JTextField enterHeightOfPotentialEnergy = new JTextField("Enter Height");
+
+
     public void mainUI() {
         myFrame.add(KineticEnergyButton);
-
+        myFrame.add(PotentialEnergyButton);
         myFrame.setSize(950, 500);
         myFrame.setLayout(new FlowLayout(FlowLayout.LEADING));
         myFrame.setVisible(true);
@@ -31,6 +41,13 @@ public class EnergyUI {
             JOptionPane.showMessageDialog(null, "Calculate Kinetic Energy");
             drawKineticEnergyUI();
         });
+        // POTENTIAL ENERGY FRAME 2
+        PotentialEnergyButton.addActionListener(e -> {
+            System.out.println("Calculate Potential Energy");
+            JOptionPane.showMessageDialog(null, "Calculate Potential Energy");
+            drawPotentialEnergyUI();
+        });
+
 
         // PARAMETER (ATTRIBUTES)
         // KINETIC ENERGY
@@ -45,6 +62,20 @@ public class EnergyUI {
 
             }
         });
+        // POTENTIAL ENERGY
+
+        calculatePotentialEnergy.addActionListener(e -> {
+            try {
+                double Mass = Double.parseDouble(enterMassOfPotentialEnergy.getText());
+                double Height = Double.parseDouble(enterHeightOfPotentialEnergy.getText());
+                double PotentialEnergy = Mass * Physics.getGravity() * Height;
+                JOptionPane.showMessageDialog(null, " Potential Energy = " + PotentialEnergy);
+            } catch (NumberFormatException nfe) {
+                JOptionPane.showMessageDialog(null, "Pls Input a Valid Number");
+
+            }
+        });
+
     }
 
     public void drawKineticEnergyUI() {
@@ -57,4 +88,15 @@ public class EnergyUI {
         KineticEnergyFrame.setVisible(true);
     }
 
+    public void drawPotentialEnergyUI() {
+        PotentialEnergyFrame = new JFrame("Potential Energy");
+        PotentialEnergyFrame.add(enterMassOfPotentialEnergy);
+        PotentialEnergyFrame.add(enterHeightOfPotentialEnergy);
+        PotentialEnergyFrame.add(calculatePotentialEnergy);
+        PotentialEnergyFrame.setLayout(new FlowLayout((FlowLayout.LEFT)));
+        PotentialEnergyFrame.setSize(900, 950);
+        PotentialEnergyFrame.setVisible(true);
+
+
+    }
 }

@@ -1,7 +1,7 @@
 package UI;
 
 public class Physics {
-    public float getGravity() {
+    public static float getGravity() {
         return Gravity;
     }
 
@@ -9,5 +9,5 @@ public class Physics {
         this.Gravity = Gravity;
     }
 
-    private float Gravity = 10;
+    private static float Gravity = 10;
 }
