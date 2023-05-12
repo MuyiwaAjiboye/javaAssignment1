@@ -38,6 +38,12 @@ public class EnergyUI {
     JTextField enterCurrentOfElectricalEnergy = new JTextField("Enter Current");
     JTextField enterTimeOfElectricalEnergy = new JTextField("Enter Time");
 
+    // MOMENTUM FRAME
+    JButton MomentumButton = new JButton("Momentum");
+    JFrame MomentumFrame = new JFrame("Momentum");
+    JButton calculateMomentum = new JButton("Calculate");
+    JTextField enterMassOfMomentum = new JTextField("Enter Mass");
+    JTextField enterVelocityOfMomentum = new JTextField("Enter Velocity");
 
     public void mainUI() {
         myFrame.add(KineticEnergyButton);
@@ -68,6 +74,12 @@ public class EnergyUI {
             drawElectricaEnergyUI();
         });
 
+        // MOMENTUM FRAME 2
+        MomentumButton.addActionListener(e -> {
+            System.out.println("Calculate Momentum");
+            JOptionPane.showMessageDialog(null, "Calculate Momentum");
+            drawMomentumUI();
+        });
 
         // PARAMETER (ATTRIBUTES)
         // KINETIC ENERGY
@@ -109,6 +121,19 @@ public class EnergyUI {
 
             }
         });
+
+        //   MOMENTUM
+        calculateMomentum.addActionListener(e -> {
+            try {
+                double Mass = Double.parseDouble(enterMassOfMomentum.getText());
+                double Velocity = Double.parseDouble(enterVelocityOfMomentum.getText());
+                double Momentum = Mass * Velocity;
+                JOptionPane.showMessageDialog(null, " Momentum = " + Momentum);
+            } catch (NumberFormatException nfe) {
+                JOptionPane.showMessageDialog(null, "Input a Valid Number");
+
+            }
+        });
     }
 
     public void drawKineticEnergyUI() {
@@ -141,5 +166,15 @@ public class EnergyUI {
         ElectricalEnergyFrame.setLayout(new FlowLayout((FlowLayout.LEFT)));
         ElectricalEnergyFrame.setSize(900, 950);
         ElectricalEnergyFrame.setVisible(true);
+    }
+
+    public void drawMomentumUI() {
+        MomentumFrame = new JFrame("Momentum");
+        MomentumFrame.add(enterMassOfMomentum);
+        MomentumFrame.add(enterVelocityOfMomentum);
+        MomentumFrame.add(calculateMomentum);
+        MomentumFrame.setLayout(new FlowLayout((FlowLayout.LEFT)));
+        MomentumFrame.setSize(600, 650);
+        MomentumFrame.setVisible(true);
     }
 }

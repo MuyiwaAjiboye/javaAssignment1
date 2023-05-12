@@ -60,7 +60,7 @@ public class Main {
             potentialDifference = input.nextDouble();
             current = input.nextDouble();
             time = input.nextDouble();
-            System.out.println(Energy.ElectricalEnergy(potententialDifference, current, time));
+            System.out.println(Energy.ElectricalEnergy( potentialDifference, current, time));
 
             System.out.println("hello");
 
